@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 100px;
+  padding: 2px 0px;
+  border-radius: 30px;
+  justify-content: space-between;
+  border: 2px solid pink;
+}
+.switcher {
+  position: absolute;
+  top:0;
+  width: 30px;
+  height: 33px;
+  background-color: rgb(255, 6, 135);
+  border-radius: 50%;
+  cursor:pointer;
+  
+}

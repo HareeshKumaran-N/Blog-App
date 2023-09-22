@@ -1,0 +1,29 @@
+@import "../../Styles/constants.scss";
+
+.logo {
+  font-family: $logo-font;
+}
+
+.navbar-wrapper {
+  width: 100%;
+//   background-color: rgb(255, 176, 176);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+  .logo
+  {
+    font-family: $logo-font;
+    font-size:2vw;
+    font-size: 30px;
+    color: rgb(252, 122, 163);
+   
+  }
+
+  .links-wrapper {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
