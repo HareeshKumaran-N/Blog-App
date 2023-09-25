@@ -1,19 +1,19 @@
+@import "../../Styles/constants.scss";
 .wrapper {
   display: flex;
   position: relative;
-  width: 100px;
+  width: 60px;
   padding: 2px 0px;
   border-radius: 30px;
   justify-content: space-between;
-  border: 2px solid pink;
+  border: 0.5px solid $highlight-font-color;
 }
 .switcher {
   position: absolute;
-  top:0;
-  width: 30px;
-  height: 33px;
-  background-color: rgb(255, 6, 135);
+  top: 0;
+  width: 21px;
+  height: 23px;
+  background-color: $highlight-font-color;
   border-radius: 50%;
-  cursor:pointer;
-  
+  cursor: pointer;
 }

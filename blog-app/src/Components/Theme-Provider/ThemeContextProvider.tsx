@@ -12,8 +12,8 @@ const ThemeContextProvider = ({ children }: any) => {
       if (localStorage.getItem("Theme")) {
         setTheme(localStorage.getItem("Theme"));
       } else {
-        setTheme("light");
-        localStorage.setItem("Theme", "light");
+        setTheme("dark");
+        localStorage.setItem("Theme", "dark");
       }
     }
   }, []);

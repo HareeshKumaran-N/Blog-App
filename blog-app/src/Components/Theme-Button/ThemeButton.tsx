@@ -34,8 +34,8 @@ const ThemeButton = () => {
           style={theme === "light" ? { right: "0px" } : { left: "0px" }}
           onClick={toggler}
         />
-        <Image src="/moon.png" alt="moon" width={30} height={30} />
-        <Image src="/sun.png" alt="moon" width={30} height={30} />
+        <Image src="/moon.png" alt="moon" width={20} height={20} />
+        <Image src="/sun.png" alt="moon" width={20} height={20} />
       </div>
     </>
   );

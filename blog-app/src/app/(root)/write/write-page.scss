@@ -1,0 +1,60 @@
+.Main {
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  // background-color: red;
+  .top-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // background-color: red;
+    .message {
+      font-size: 2vw;
+      font-weight: 100;
+      // background-color: red;
+      text-align: left;
+    }
+    .TextField {
+      width: 60%;
+      font-size: 1vw;
+      padding: 1%;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(72, 72, 72, 0.062);
+      &:focus {
+        
+        outline: none;
+      }
+    }
+  }
+  .quil-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-height: 50vh;
+ text-align: justify;
+    .ql-snow {
+      border: none;
+    }
+
+    .ql-toolbar {
+     background-color: rgba(72, 72, 72, 0.062);
+      width: fit-content;
+      border-radius: 10px;
+      font-size:1vw;
+      
+    }
+
+    .ql-editor {
+      // border: none;
+      border-radius: 10px;
+      min-height: 50vh;
+    background-color: rgba(72, 72, 72, 0.062);
+      text-align: justify;
+    }
+  }
+}

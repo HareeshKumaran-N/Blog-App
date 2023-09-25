@@ -1,23 +1,22 @@
 @import "../../Styles/constants.scss";
 
-.logo {
-  font-family: $logo-font;
-}
 
 .navbar-wrapper {
   width: 100%;
-//   background-color: rgb(255, 176, 176);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1%;
+  padding: 1% 0;
+
   .logo
   {
     font-family: $logo-font;
-    font-size:2vw;
-    font-size: 30px;
-    color: rgb(252, 122, 163);
-   
+    font-size: 25px;
+    color:$highlight-font-color;
+    font-weight:100;
+    // opacity:0.5;
+ 
   }
 
   .links-wrapper {
@@ -25,5 +24,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color:$highlight-font-color;
   }
 }

@@ -1,5 +1,11 @@
-import Image from "next/image";
+import './Home-page.scss';
+import Welcome from "@/Components/Welcome-banner/Welcome-banner";
 
 export default function Home() {
-  return <p>Home</p>;
+  return<>
+  <Welcome/>
+  <div className="trending-post">
+
+  </div>
+  </>
 }

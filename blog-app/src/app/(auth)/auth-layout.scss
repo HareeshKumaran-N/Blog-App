@@ -1,0 +1,19 @@
+@import "../../Styles/constants.scss";
+.clerk {
+  font-family: $content-font;
+  max-width: 100%;
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+
+  background-image: radial-gradient(
+    ellipse farthest-corner at 10px 10px,
+    #e2d9f5,
+    #f7f6fa 50%,
+    #ffffff 50%
+  );
+  background-size: 10px 10px;
+}

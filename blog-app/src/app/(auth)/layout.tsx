@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import './auth-layout.scss';
 
 export const metadata: Metadata = {
   title: "Blog App",
-  description: "Best blogging app",
+  description: "Best next js blogging app",
 };
 
 export default function RootLayout({
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body className="clerk">{children}</body>
       </html>
     </ClerkProvider>
   );
