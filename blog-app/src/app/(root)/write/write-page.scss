@@ -1,3 +1,5 @@
+@import "../../../Styles/constants.scss";
+
 .Main {
   width: 100%;
   margin-top: 3%;
@@ -26,7 +28,6 @@
       border-radius: 10px;
       background-color: rgba(72, 72, 72, 0.062);
       &:focus {
-        
         outline: none;
       }
     }
@@ -35,26 +36,107 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
-    min-height: 50vh;
- text-align: justify;
+    min-height: 60vh;
+    text-align: justify;
     .ql-snow {
       border: none;
     }
 
     .ql-toolbar {
-     background-color: rgba(72, 72, 72, 0.062);
+      background-color: rgba(72, 72, 72, 0.062);
       width: fit-content;
       border-radius: 10px;
-      font-size:1vw;
-      
+      font-size: 1vw;
     }
 
     .ql-editor {
       // border: none;
       border-radius: 10px;
       min-height: 50vh;
-    background-color: rgba(72, 72, 72, 0.062);
+      background-color: rgba(72, 72, 72, 0.062);
       text-align: justify;
     }
+  }
+
+  .cover-image-controller-wrapper {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // background-color: red;
+    width: fit-content;
+    gap: 15px;
+    margin-top: 1%;
+    input {
+      display: none;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      &:hover {
+        color: $highlight-font-color;
+        transition: 2.5s;
+      }
+    }
+  }
+
+  .preview-area {
+    width: 100%;
+    background-color: rgba(72, 72, 72, 0.062);
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      border-radius: 10px;
+    .cover-image {
+      width: 75%;
+      height: 55vh;
+    }
+  }
+
+  .publish-container
+  {
+       margin-bottom:2%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap:50px;
+
+    .category-wrapper
+    {
+    display: flex;
+    align-items: center;
+    gap:10px;
+
+ select {
+   background-color: rgba(72, 72, 72, 0.062);
+  color:$highlight-font-color;
+  padding: 2%;
+  border-radius:30px;
+  font-size:15px;
+  &:hover
+  {
+    cursor: pointer;
+  }
+  
+ 
+ }
+//  option:not(:checked) {
+//   //  background-color:$highlight-font-color;
+// }
+
+    }
+
+ 
+    .publish-button
+    {
+      
+    @include publish-button();
+    padding:1% 1.5%;
+    border-radius:10px;
+    }
+
   }
 }

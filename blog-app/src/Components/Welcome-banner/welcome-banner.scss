@@ -1,3 +1,5 @@
+@import "../../Styles/constants.scss";
+
 .welcome-wrapper {
   width: 100%;
   margin-top: 5%;
@@ -8,23 +10,32 @@
 //  border:1px solid red;
   justify-content:center;
   align-items: center;
-  font-size: 1vw;
+
   .user-welcome
   {
-    font-size:3vw;
+    font-size:3.5vw;
     font-weight: 900;
     font-weight:lighter;
   }
 
   .welcome-gradient {
     background-image: linear-gradient(90deg, #ff4dcc 5%, #5500ff 100%);
-    filter: blur(120px);
+    filter: blur(150px);
     width: 60%;
     height: 50%;
     position: absolute;
     left: 20%;
+  
     // top: 10%;
-
+  transition:3s;
     opacity: 0.4;
+
+    &:hover
+    {
+     filter: blur(90px);
+    background-image: linear-gradient(90deg, #ff4dcc 6%, #5500ff 90%);
+    }
   }
+
+
 }

@@ -1,0 +1,56 @@
+@import "../../../Styles/constants.scss";
+.parent-wrapper {
+  width: 35%;
+  background-color: rgba(255, 255, 255, 0.512);
+  align-self: flex-start;
+  margin-top: 5%;
+  padding: 0 5%;
+  .form-wrapper {
+    width: 100%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    .profile-wrapper{
+        margin-top: 2%;
+        display: flex;
+        gap:20px;
+    .profile-pic
+    {
+        border-radius:50%;
+    }
+    .image-input {
+      display: none;
+    }
+    
+
+    .image-label {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      &:hover {
+        color: $highlight-font-color;
+        transition: 2.5s;
+      }
+    }
+    }
+    // align-items: center;
+
+    // .username-field
+    // {
+    //     width:70%;
+    // }
+
+    
+  }
+    .submit-btn
+      {
+        @include primary-button();
+        width: 20%;
+        padding:10px;
+        margin-top:2%;
+
+      }
+}

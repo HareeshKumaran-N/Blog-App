@@ -1,15 +1,18 @@
 import Link from "next/link";
 import "./Navigation.scss";
 import ThemeButton from "@/Components/Theme-Button/ThemeButton";
+import ProfileButton from "../ProfileButton/Profile-Button";
 import {
   RedirectToSignIn,
   SignedIn,
   SignedOut,
-  UserButton
+  UserButton,
+  UserProfile,
+  SignOutButton
 } from "@clerk/nextjs";
 const NavigationBar = () => {
   return (
-    <>
+
       <div className="navbar-wrapper">
         <Link href={"/"} className="logo">
           Blogo.
@@ -27,20 +30,23 @@ const NavigationBar = () => {
           <Link href={"/write"}>
             <>write</>
           </Link>
-           <Link href={"/write"}>
-            <>media</>
-          </Link>
-           <Link href={"/write"}>
+         
+           {/* <Link href={"/"}>
             <>your blogs</>
-          </Link>
+          </Link> */}
 
+              {/* <SignOutButton>
+            
+              </SignOutButton> */}
+              
+          {/* <UserButton afterSignOutUrl="/sign-in"/> */}
 
-          <UserButton afterSignOutUrl="/sign-in"/>
+              <ProfileButton/>
           </SignedIn>
           
         </div>
       </div>
-    </>
+
   );
 };
 

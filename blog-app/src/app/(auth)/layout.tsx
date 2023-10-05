@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import './auth-layout.scss';
+  import 'react-toastify/dist/ReactToastify.css';
+import ToastProvider from "@/Components/ToastProvider/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Blog App",
@@ -15,7 +17,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="clerk">{children}</body>
+     
+          <body className="clerk">
+          <ToastProvider>
+                {children}
+          </ToastProvider>
+           </body>
+             
       </html>
     </ClerkProvider>
   );
