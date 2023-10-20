@@ -38,11 +38,6 @@ try {
         }
 
 } catch (error) {
-      console.log('user-get API',error);
-         return NextResponse.json({
-                message:`Something went wrong, Error: ${error}`,
-                status:"not ok",
-                success:false
-            })  
+   
 }
 }

@@ -35,7 +35,7 @@ const ProfileButton=async ()=>{
 return(
  
     <>
-    <Link href="/profile" >
+    <Link href="/MyProfile" >
     <Image className="profile-image" src={(profilePic)? profilePic : default_user_profile} width={25} height={25} alt="Profile_pic">
 
     </Image>

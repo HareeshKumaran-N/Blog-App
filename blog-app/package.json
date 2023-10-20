@@ -19,6 +19,8 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "firebase": "^10.4.0",
+    "javascript-time-ago": "^2.5.9",
+    "material-icons": "^1.13.12",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.3",
     "next": "^13.5.3",

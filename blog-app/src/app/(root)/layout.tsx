@@ -5,6 +5,8 @@ import NavigationBar from "@/Components/Navigation/Navigation";
 import ThemeContextProvider from "@/Components/Theme-Provider/ThemeContextProvider";
 import Main from "@/Components/Main/Main";
 import ToastProvider from "@/Components/ToastProvider/ToastProvider";
+
+
 export const metadata: Metadata = {
   title: "Blog App",
   description: "Best blogging app",

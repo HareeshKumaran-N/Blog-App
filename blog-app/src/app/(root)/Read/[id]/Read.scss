@@ -1,0 +1,43 @@
+@import "../../../.././Styles/constants.scss";
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+     margin-top:2%;
+  .blog-details {
+    margin-top:2%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    h1 {
+      font-weight: 100;
+    //   color: $highlight-font-color;
+    font-size:2.5vw;
+    }
+    .author-details
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // background-color: red;
+        gap:20px;
+        .author
+        {
+            display: flex;
+            align-items: center;
+            gap:10px
+        }
+        .time-ago
+        {
+           color: $highlight-font-color;   
+        }
+    }
+
+  }
+
+  .blog-content
+  {
+    margin:3% 0;
+  }
+}

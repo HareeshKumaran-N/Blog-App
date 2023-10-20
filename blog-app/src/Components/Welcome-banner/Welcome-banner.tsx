@@ -5,28 +5,25 @@ import Typewriter from 'typewriter-effect';
 import { welcome_qoute } from '@/Utils/Constants';
 import { useUser } from '@clerk/nextjs';
 import { useEffect,useState} from 'react';
-
+import { getUserDetailsAction } from '@/actions/user.actions';
 export default function Welcome() {
    const { isLoaded, isSignedIn, user } = useUser();
    const [username,setUsername]=useState("");
 
-// useEffect(()=>{
-//       const res=await fetch(`/api/user/${user?.id}`,{
-//           method:"GET",
-//          });
+  const fetchUserName=async()=>{
+  const{data}=await getUserDetailsAction(user?.id);
+  setUsername(data.username);
+  }
 
-//         const{username}=await res.json();
-//         if(username)
-//         {
-//           setUsername(username);
-//         }
-//    },[user]);
-
+   useEffect(()=>{
+    fetchUserName();
+   },[user]);
+  
 
   return(
   <div className='welcome-wrapper'>
   <div className='welcome-gradient'/>
-  <p className='user-welcome'>Welcome {user?.firstName || "Blogger"} </p>
+  <p className='user-welcome'>Welcome {username || "Blogger"} </p>
 
 <Typewriter
   options={{

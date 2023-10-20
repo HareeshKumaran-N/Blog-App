@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Satisfy&family=Borel&family=Moirai+One&family=Oi&family=Raleway&family=Ysabeau+Infant:ital,wght@1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&family=Borel&family=Moirai+One&family=Oi&family=Raleway&family=Ysabeau+Infant:ital,wght@1,100&family=Poiret+One&display=swap");
 
 $logo-font: "Raleway", sans-serif;
 
-$creator-font: "Ysabeau Infant", sans-serif;
+$creator-font: "Satisfy", cursive;
 
 $content-font: "Raleway", sans-serif;
-
+$secondary-font: "Poiret One", cursive;
 $highlight-font-color: rgb(90, 13, 166);
 
 .light-mode {
@@ -22,26 +22,27 @@ $highlight-font-color: rgb(90, 13, 166);
   input {
     color: rgb(219, 218, 218);
   }
+  textarea {
+    color: rgb(219, 218, 218);
+  }
 }
 
-@mixin primary-button{
+@mixin primary-button {
   background-image: linear-gradient(
     to right,
     #56a4ed 0%,
     #c60434 51%,
     #3a6186 100%
   );
-  
 
   text-align: center;
 
   transition: 0.5s;
   background-size: 200% auto;
-  border:none;
+  border: none;
   color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
-
 
   &:hover {
     cursor: pointer;
@@ -51,27 +52,35 @@ $highlight-font-color: rgb(90, 13, 166);
   }
 }
 
-@mixin publish-button{
-          
-   
-            background-image: linear-gradient(to right, #5ffa64 0%, #005b3b  51%, #005b3b  100%);
-         
-            
-            text-align: center;
-            // text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-          
-            border:none;
-           
-            
-          
+@mixin publish-button {
+  background-image: linear-gradient(
+    to right,
+    #5ffa64 0%,
+    #005b3b 51%,
+    #005b3b 100%
+  );
 
-          &:hover {
-            background-position: right center; /* change the direction of the change here */
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
-          }
+  text-align: center;
+  // text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+
+  border: none;
+
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.blogs-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+
+  // background-color: #005b3b;
 }

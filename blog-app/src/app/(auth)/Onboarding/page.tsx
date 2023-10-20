@@ -8,7 +8,9 @@ import { default_user_profile } from '@/Utils/Constants';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import firebase_app from "../../../Utils/firebase-config";
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { getUserDetailsAction ,createUserActions} from '@/actions/user.actions';
+import LoadingGif from '../../../../public/loading.gif';
 
 const Onboarding=()=>{
 
@@ -16,34 +18,30 @@ const Onboarding=()=>{
 
    const [username,setUserName]=useState("");  
    const [userBio,setUserBio]=useState("");
-   const [uploadedURL,setUploadedURL]=useState("");
+   const [uploadedURL,setUploadedURL]=useState(default_user_profile);
+   const [loading,setLoading]=useState(true);
    const {user} =  useClerk();
 
-   const isUserOnboarded=async ()=>{
+
+   const checkIsUserOnboarded=async ()=>{
+     const {data}=await getUserDetailsAction(user?.id);
+     if(Object.keys(data).length)
+     {
       
-       
-        const res=await fetch(`/api/user/${user?.id}`,{
-          method:"GET",
-         });
+       if (data?.isOnboarded) {
+         router.push("/");
+       } 
 
-        const {data}=await res.json();
-         console.log(data);
+     }
 
-        if(data?.isOnboarded)
-         {
-          console.log("@working",isUserOnboarded)
-            router.push('/');
-         }
-         else{
-          console.log("nakku")
-         }
-
+     setLoading(false);
    }
 
    useEffect(()=>{
 
-      isUserOnboarded().then(()=>console.log("ran"));
-   
+
+    checkIsUserOnboarded();
+  
 
    },[user]);
 
@@ -115,66 +113,93 @@ uploadTask.on('state_changed',
             isOnboarded:true
         }
         
-        const res=await fetch('/api/user',{
-          method:"POST",
-          body:JSON.stringify(data)
-         })
+      
 
-         const response=await res.json();
+         const response=await createUserActions(data);
          console.log(response);
-         if(response.success)
+         if(response?.success)
          {
           toast.success(
-            response.message
+            response?.message
             );
           router.push('/')  ;
          }
          else{
           toast.error(
-            response.message
+            response?.message
           );
          }
 
 }
 
-    return(
-     <>
-    <div className='parent-wrapper'>
-    <h1>Create your Profile.</h1>
-    <div className="form-wrapper">
-        
-  <div className='profile-wrapper'>
+    return (
+      <>
+        {loading ? (
+          <div className="loading-main">
+            <Image src={LoadingGif} alt="Loading" width={400} height={200} />
+          </div>
+        ) : (
+          <div className="parent-wrapper">
+            <h1>Create your Profile.</h1>
+            <div className="form-wrapper">
+              <div className="profile-wrapper">
+                <Image
+                  src={uploadedURL ? uploadedURL : default_user_profile}
+                  className="profile-pic"
+                  width={70}
+                  height={70}
+                  alt="profile-pic"
+                />
 
-    <Image src={(uploadedURL)?uploadedURL:default_user_profile} className='profile-pic' width={70} height={70} alt='profile-pic'/>
+                <label className="image-label" htmlFor="file-input">
+                  click to upload profile picture
+                  <Image
+                    src="/photo.png"
+                    width={20}
+                    height={20}
+                    alt="Image-upload"
+                  />
+                </label>
+                <input
+                  className="image-input"
+                  id="file-input"
+                  type="file"
+                  onChange={(event) =>
+                    fileUploadToFirebase(event.target.files[0])
+                  }
+                />
+              </div>
 
-      <label className='image-label' htmlFor="file-input">
-         click to upload profile picture
-        <Image src='/photo.png' width={20} height={20} alt='Image-upload'/>
-    </label>
-     <input  className='image-input'  id="file-input" type="file" onChange={(event)=>fileUploadToFirebase(event.target.files[0])}/>
-</div>
-   
- <TextField  className="username-field" id="standard-basic" label="username" variant="standard" value={username} onChange={(e)=>{
-  setUserName(e.target.value)
- }}/>
-   <TextField
-          id="outlined-multiline-flexible"
-          label="Bio"
-          multiline
-          rows={4}
-          value={userBio} 
-          onChange={(e)=>{
-          setUserBio(e.target.value)
-           }}
-        />
-    </div>
-     
-     <button className='submit-btn' onClick={submitForm}>
-      Create
-     </button>
-    </div>
-    </> 
-    )
+              <TextField
+                className="username-field"
+                id="standard-basic"
+                label="username"
+                variant="standard"
+                value={username}
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
+              />
+              <TextField
+                id="outlined-multiline-flexible"
+                label="Bio"
+                multiline
+                rows={4}
+                value={userBio}
+                onChange={(e) => {
+                  setUserBio(e.target.value);
+                }}
+              />
+            </div>
+
+            <button className="submit-btn" onClick={submitForm}>
+              Create
+            </button>
+          </div>
+        )}
+      </>
+    );
+    
 }
 
 export default Onboarding
