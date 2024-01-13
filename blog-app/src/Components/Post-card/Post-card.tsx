@@ -1,9 +1,12 @@
+"use client";
 import Link from 'next/link';
 import './Post-card.scss';
 import Image from 'next/image';
-
-function PostCard({Data,Editable})
+import { useUser } from '@clerk/nextjs';
+function PostCard({Data,Editable=false})
 {
+  const {isLoaded,isSignedIn,user}=useUser();
+
     return (
       <div className="card-main">
         <Image
@@ -17,33 +20,39 @@ function PostCard({Data,Editable})
         />
 
         <div className="overlay">
-          <p>{Data.title}</p>
-          <div className="overlay-bottom-wrapper">
-            <div className="overlay-bottom-left-wrapper">
-              {!Editable ? (
-                <>
-                  {" "}
-                  <Image
-                    src={Data.author_id.profile_pic}
-                    alt="profile-pic"
-                    sizes="100vw"
-                    width={30}
-                    height={30}
-                    className="profile-pic"
-                  />
-                  <span>{Data.author_id.username}</span>
-                </>
-              ) : (
-                <Link href={`/Edit/${Data._id}`} className="read">
-                  <span class="material-symbols-rounded">edit_note</span>
-                </Link>
-              )}
-            </div>
+          <p className='blog-title'>{Data.title}</p>
+          <Link
+            href={
+              Data.author_id.user_id === user?.id ? "/MyProfile" : `/Profile/${(Data.author_id._id)}`
+         }
+          >
+            <div className="overlay-bottom-wrapper">
+              <div className="overlay-bottom-left-wrapper">
+                {!Editable ? (
+                  <>
+                    {" "}
+                    <Image
+                      src={Data.author_id.profile_pic}
+                      alt="profile-pic"
+                      sizes="100vw"
+                      width={30}
+                      height={30}
+                      className="profile-pic"
+                    />
+                    <span>{Data.author_id.username}</span>
+                  </>
+                ) : (
+                  <Link href={`/Edit/${Data._id}`} className="read">
+                    <span class="material-symbols-rounded">edit_note</span>
+                  </Link>
+                )}
+              </div>
 
-            <Link href={`/Read/${Data._id}`} className="read">
-              <span className="material-symbols-rounded">open_in_new</span>
-            </Link>
-          </div>
+              <Link href={`/Read/${Data._id}`} className="read">
+                <span className="material-symbols-rounded">open_in_new</span>
+              </Link>
+            </div>
+          </Link>
         </div>
       </div>
     );

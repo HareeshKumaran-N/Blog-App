@@ -12,10 +12,11 @@
 
 .parent-wrapper {
   width: 35%;
-  background-color: rgba(255, 255, 255, 0.512);
+  background-color:#6d0dcdbd;
   align-self: flex-start;
   margin-top: 5%;
-  padding: 0 5%;
+  padding:5% 3%;
+  border-radius:25px;
   .form-wrapper {
     width: 100%;
     margin-top: 1%;
@@ -61,7 +62,7 @@
         @include primary-button();
         width: 20%;
         padding:10px;
-        margin-top:2%;
+        margin-top:5%;
 
       }
 }

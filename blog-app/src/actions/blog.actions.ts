@@ -3,6 +3,12 @@
 import blogModel from "@/Models/blog.model";
 import connectToDB from "@/Utils/connectToDB";
 import userModel from "@/Models/user.model";
+import { revalidatePath } from "next/cache";
+
+//function is used to check for skeleton feature.
+import pauseFunction from "@/Utils/pause-function";
+
+
 
 export const createBlogAction = async (blogObj) => {
   try {
@@ -13,51 +19,105 @@ export const createBlogAction = async (blogObj) => {
     const { title, category, blog, cover_url } = blogObj;
     const newBlog = new blogModel({title,category,blog,author_id:owner._id,cover_url });
     await newBlog.save();
-
+    revalidatePath('/');
     return {
       message: "blog created",
-      success: "true",
+      success: true,
     };
   } catch (error) {
     console.log("error", error);
     return {
       message: `Oops something went wrong,Error:${error}`,
-      success: "false",
+      success: false,
     };
   }
 };
 
-export const fetchAllPosts = async () => {
+
+export const fetchTrendingPost=async()=>{
+  try {
+    //  await pauseFunction(5000)
+     await connectToDB();
+
+      const TrendingBlog = await blogModel
+        .find({})
+        .sort({ views: -1 })
+        .populate("author_id")
+        .limit(1)
+        .exec();
+
+      
+      return {
+        message: "blogs fetched",
+        success: true,
+        data: TrendingBlog,
+      };
+
+  } catch (error) {
+    return {
+      message: `Oops something went wrong,Error:${error}`,
+      success: false,
+    }; 
+  }
+}
+
+// infinite scroll feature
+export const fetchAllPosts = async (page:number) => {
   try {
     try {
       await connectToDB();
-
+      // await pauseFunction(10000)
+      const limit = 3;
+      const skip = (page - 1) * limit;
       const allBlogs = await blogModel
         .find({})
         .sort({ views: -1 })
         .populate("author_id")
-        .exec();
-      console.log(allBlogs);
+        .skip(skip)
+        .limit(limit)
+        .lean();
+
+      console.log("page", page);
+      console.log("fetchedBlog", allBlogs);
       return {
         message: "blogs fetched",
-        success: "true",
+        success: true,
         data: allBlogs,
       };
     } catch (error) {
       console.log("error", error);
       return {
         message: `Oops something went wrong,Error:${error}`,
-        success: "false",
+        success: false,
         data: [],
       };
     }
   } catch (error) {
     return {
       message: `Oops something went wrong,Error:${error}`,
-      success: "false",
+      success: false,
     };
   }
 };
+
+export const getTotalPostCount=async ()=>
+{
+  try {
+    await connectToDB();
+    const count=await blogModel.find({}).count();
+
+    return{
+      message:"Fetched counts",
+      data:count,
+      success:true,
+    }
+  } catch (error) {
+     return {
+      message: `Oops something went wrong,Error:${error}`,
+      success: false,
+    }; 
+  }
+}
 
 export const fetchPostById = async (id) => {
   console.log("Id Passed to read", id);
@@ -69,14 +129,14 @@ export const fetchPostById = async (id) => {
       console.log("PostByID",Post);
 return {
   message: "blog fetched",
-  success: "true",
+  success: true,
   data: Post,
 };
     }
     else
       return {
         message: "blog not found",
-        success: "false",
+        success: false,
         data: {},
       };
 
@@ -85,7 +145,7 @@ return {
   } catch (error) {
     return {
       message: `Oops something went wrong,Error:${error}`,
-      success: "false"
+      success: false
     };
   }
 };
@@ -94,19 +154,19 @@ return {
 export const getPostByAuthorID=async (userID)=>{
   
   try {
- const blogs = await blogModel.find({ author_id: userID });
- console.log("Post related to author",blogs);
+ const blogs = await blogModel.find({ author_id: userID }).populate('author_id').lean();
+
 
  if(blogs.length)
   return {
     message: "blog fetched",
-    success: "true",
+    success: true,
     data: blogs,
  }
  else
  return {
    message: "No blogs found",
-   success: "true",
+   success: true,
    data:[]
  };
 
@@ -114,7 +174,7 @@ export const getPostByAuthorID=async (userID)=>{
   } catch (error) {
      return {
        message: `Oops something went wrong,Error:${error}`,
-       success: "false",
+       success: false,
      };
   }
  
@@ -133,13 +193,13 @@ export async function fetchPostDataForEditing(id)
 
      return {
        message: "found",
-       success: "true",
+       success: true,
        data:Data,
      };
   } catch (error) {
       return {
         message: `Oops something went wrong,Error:${error}`,
-        success: "false",
+        success: false,
       };
   }
 }
@@ -151,12 +211,19 @@ export const UpdateChangesByID=async (id,updateData)=>{
     await blogModel.findByIdAndUpdate(id,updateData);
     return {
       message: "found",
-      success: "true",
+      success: true,
     };
   } catch (error) {
     return {
       message: `Oops something went wrong,Error:${error}`,
-      success: "false",
+      success: false,
     };
   }
 }
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+@import "../../Styles/constants.scss";
+.super-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap:5px;
+  .comment-wrapper {
+    display: flex;
+    width: 100%;
+    // border: 1px solid red;
+
+    gap: 2%;
+    // margin: 2% 0;
+    align-items: center;
+
+    .profile {
+      width: 4%;
+      border-radius: 50%;
+    }
+
+    .right-wrapper {
+      padding: 1%;
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .username {
+        font-size: 1vw;
+        color: $highlight-font-color;
+        font-weight: 900;
+      }
+      .comment {
+        background-color: rgba(72, 72, 72, 0.062);
+        padding: 1%;
+        border-radius: 10px;
+        width: fit-content;
+      }
+      .TextField {
+        width: 95%;
+        font-size: 1vw;
+        padding: 1%;
+        border: none;
+        border-radius: 10px;
+        resize: none;
+        background-color: rgba(72, 72, 72, 0.062);
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    cursor:pointer;
+    .btn-container {
+       transition:1s;
+    //  visibility: visible;
+     opacity:1;
+      width: 93%;
+      align-self: flex-end;
+      // background-color: red;
+      display: flex;
+      justify-content: flex-start;
+      gap: 5%;
+      span {
+        font-size: 20px;
+        font-weight: 400;
+        color: rgb(120, 120, 120);
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .btn-container {
+    // visibility: hidden;
+    opacity:0;
+  }
+}

@@ -118,24 +118,24 @@ const PlayGround = (props) => {
       });
 
       if (response.success) {
-        toast.success(response.message);
+        toast(response.message);
         router.push("/");
       } else {
         toast.error(response.message);
       }
     } else if (!image) {
-      toast.warn("Provide a cover image");
+      toast("Provide a cover image");
     } else if (!blogTitle) {
-      toast.warn("Provide a title");
+      toast("Provide a title");
     } else if (!blogContent) {
-      toast.warn("Provide your content");
+      toast("Provide your content");
     }
   };
 
   const editBlog =async ()=>{
      if(props?.blogData?.title===blogTitle && props?.blogData?.blog===blogContent && props?.blogData?.category===category && props?.blogData?.cover_url===uploadedURL)
      {
-      toast.warn("No changes made");
+      toast("No changes made");
      }
      else{
       const UpdataData={
@@ -147,7 +147,7 @@ const PlayGround = (props) => {
       const{success,message}=await UpdateChangesByID(props.Id,UpdataData);
       if(success)
       {
-        toast.success("Updated");
+        toast("Updated");
         router.push('/MyProfile');
       }
       else

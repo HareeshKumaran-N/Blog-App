@@ -76,11 +76,21 @@ $highlight-font-color: rgb(90, 13, 166);
   }
 }
 
-.blogs-wrapper {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5%;
+ @mixin blogs-wrapper {
+    display: flex;
+    width:100%;
+    // background-color: red;
+    gap:10px;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    // align-content:space-evenly;
+    // margin-top: 2%;
 
-  // background-color: #005b3b;
+            @media screen and (max-width: 650px) {
+              justify-content: center;
+              // background-color: #56a4ed;
+    }
+
 }
+
+

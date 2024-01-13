@@ -1,0 +1,58 @@
+@import "../../Styles/constants.scss";
+.footer-main-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1%;
+  align-items: center;
+  font-size: 15px;
+  width: 100%;
+  // background-color: red;
+  padding:5% 0 3% 0;
+
+
+  p {
+    position: relative;
+    z-index: 1;
+  }
+  p:hover {
+    animation: animate 8s linear infinite;
+
+    cursor:url('../../../public/Linked-in.png') auto;
+  }
+
+  @keyframes animate {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 400%;
+    }
+  }
+
+  p:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    bottom: -15px;
+    left: -15px;
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      #03a8f462,
+      rgba(244, 65, 166, 0.308),
+      #ffeb3b44,
+      #03a8f441
+    );
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  p:hover:before {
+    filter: blur(30px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+  }
+}
+
+

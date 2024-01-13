@@ -1,0 +1,24 @@
+.res-navlinks {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(217 211 255 / 98%);
+  width: 150px;
+  height: 30%;
+  right: 50px;
+  border-radius: 5%;
+  z-index: 3;
+
+  // animation: rotateAnimation 0.2s ease 1;
+
+}
+
+//   @keyframes rotateAnimation {
+
+// 	from {transform: rotateY(90deg);}
+// 	to {transform: rotateY(280deg);}
+// }
+
+

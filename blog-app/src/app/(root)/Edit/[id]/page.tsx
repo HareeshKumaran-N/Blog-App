@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchPostDataForEditing } from "@/actions/blog.actions";
 import { useUser } from "@clerk/nextjs";
 import Loader from "@/Components/Loader/Loader";
+import PageTransistionTemplate from "@/Components/Page-transistion-animation/Page-transistion";
 
 const EditPage = ({ params }) => {
     const [blogData,setBlogData]=useState({})
@@ -17,11 +18,9 @@ const EditPage = ({ params }) => {
   }, []);
   if(Object.keys(blogData).length)
   return (
-    <PlayGround
-      Id={params.id}
-      blogData={blogData}
-      mode="editing"
-    />
+    <PageTransistionTemplate>
+      <PlayGround Id={params.id} blogData={blogData} mode="editing" />
+    </PageTransistionTemplate>
   );
   else
   return <Loader/>

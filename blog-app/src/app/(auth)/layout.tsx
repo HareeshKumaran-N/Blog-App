@@ -1,24 +1,37 @@
+"use client"
+
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import './auth-layout.scss';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import ToastProvider from "@/Components/ToastProvider/ToastProvider";
+import { useState,useEffect } from "react";
 
-export const metadata: Metadata = {
-  title: "Blog App",
-  description: "Best next js blogging app",
-};
+
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+})
+ {
+  const [theme, setTheme] = useState("");
+
+  useEffect(() => {
+    if (typeof window.localStorage) {
+      if (localStorage.getItem("Theme")) {
+        setTheme(localStorage.getItem("Theme"));
+      } else {
+        setTheme("dark");
+      }
+    }
+  }, []);
+  
   return (
     <ClerkProvider>
       <html lang="en">
      
-          <body className="clerk">
+          <body className={((theme==="dark")?"dark-mode":"light-mode")+" clerk"}>
           <ToastProvider>
                 {children}
           </ToastProvider>

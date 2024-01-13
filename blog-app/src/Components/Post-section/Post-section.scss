@@ -1,0 +1,23 @@
+@import "../../Styles/constants.scss";
+.Post-main-wrapper {
+  @include blogs-wrapper();
+}
+
+.post-section-header{
+  font-weight: 100;
+  font-size:25px;
+  
+  @media screen and (max-width: 650px) {
+text-align: center;
+font-size:20px;
+margin-bottom:5%;
+  }
+}
+
+.loader-wrapper {
+  // background-color: red;
+  margin-top: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

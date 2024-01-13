@@ -1,50 +1,46 @@
-import './Profile-Button.scss';
-import Link from "next/link"
-import Image from "next/image"
-import { useClerk,currentUser } from '@clerk/nextjs';
-// import { useEffect,useState } from "react";
+"use client";
+import "./Profile-Button.scss";
+import Link from "next/link";
+import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
+import { useEffect,useState } from "react";
 import { default_user_profile } from "@/Utils/Constants";
-import { getUserDetailsAction } from '@/actions/user.actions';
+import { getUserDetailsAction } from "@/actions/user.actions";
 
-
-const ProfileButton=async ()=>{
-    const user =await currentUser();
-
-    // const [profilePic,setProfilePic]=useState("");
-
-    // const fetchProfilePic=async ()=>{
-   
-    //     const res=await fetch(`api/user/${user?.id}`,{
-    //       method:"GET",
-    //      })
-
-    //     const {data}=await res.json();  
-        
-    //     setProfilePic(data?.profile_pic);
-    // }
-   
-    const userData=await getUserDetailsAction(user.id);
-    const profilePic=userData?.data.profile_pic;
-    
-
-//     useEffect(()=>{
-// fetchProfilePic().then(()=>console.log("ran"));
-// console.log("iser",profilePic);
-//     },[user]);
-
-return(
+const ProfileButton = () => {
  
-    <>
-    <Link href="/MyProfile" >
-    <Image className="profile-image" src={(profilePic)? profilePic : default_user_profile} width={25} height={25} alt="Profile_pic">
+  const[userDetails,setUserDetails]=useState({});
 
-    </Image>
-    </Link>
-    </>
+  const { isSignedIn, user, isLoaded } = useUser();
 
-)
+  const fetchUserData=async ()=>{
+    const res=await getUserDetailsAction(user?.id);
+    setUserDetails(res?.data)
+  }
+  useEffect(()=>{
+    if(isSignedIn && isLoaded)
+    {
+      fetchUserData();
+    }
+  },[user])
 
+  return (
 
-}
+      <Link href="/MyProfile">
+        <Image
+          className="profile-image"
+          src={
+            userDetails?.profile_pic
+              ? userDetails?.profile_pic
+              : default_user_profile
+          }
+          width={25}
+          height={25}
+          alt="Profile_pic"
+        ></Image>
+      </Link>
 
-export default ProfileButton
+  );
+};
+
+export default ProfileButton;

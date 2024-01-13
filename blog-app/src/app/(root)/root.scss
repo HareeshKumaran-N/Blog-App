@@ -17,6 +17,18 @@
         }
     }
 
+    body::-webkit-scrollbar {
+  width: 2px;
+
+}
+
+ 
+ 
+body::-webkit-scrollbar-thumb {
+  background-color:$highlight-font-color;
+//   outline: 1px solid slategrey;
+}
+
 }
 
 

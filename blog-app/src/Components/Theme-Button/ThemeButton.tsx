@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
 import { ThemeContext } from "@/Components/Theme-Provider/ThemeContextProvider";
-
+import { motion } from "framer-motion";
 import "./ThemeButton.scss";
 
 import Image from "next/image";

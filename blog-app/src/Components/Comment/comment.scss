@@ -1,0 +1,54 @@
+@import "../../Styles/constants.scss";
+.add-comment-main-wrapper{
+    // margin:2% 0;
+.add-comment-wrapper
+{
+    display: flex;
+    width:100%;
+    align-items: center;
+//  background-color: red;
+ gap:2%;
+ margin:20px 0;
+ height: auto;
+  .profile
+  {
+      width: 4%;
+    border-radius:50%;
+    // height:100%;
+    
+  }
+      .TextField {
+      width: 95%;
+      font-size: 1vw;
+      padding: 1%;
+      border: none;
+      border-radius: 10px;
+      resize: none;
+      background-color: rgba(72, 72, 72, 0.062);
+      &:focus {
+        outline: none;
+      }
+    }
+
+}
+
+.btn-container
+{
+    width:100%;
+    // margin-bottom:5%;
+    // background-color: red;
+    display: flex;
+    justify-content: end;
+    gap:5%;
+    span{
+        font-size:25px;
+        font-weight: 300;
+        color: rgb(120, 120, 120);
+        &:hover{
+            cursor:pointer;
+
+        }
+    }
+    
+}
+}

@@ -29,12 +29,12 @@ const blogSchema=new Schema({
         type:String,
         required:false
     },
-    // comment:[
-    //     {
-    //         type:Schema.Types.ObjectId,
-    //         ref:"comments"
-    //     }
-    // ]
+    comments:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"comments"
+        }
+    ],
     views:{
         type:Number,
         required:false,
@@ -44,6 +44,6 @@ const blogSchema=new Schema({
     
 })
 
-const blogModel=mongoose.models.blogs || model("blogs",blogSchema);
+const blogModel=mongoose?.models?.blogs || model("blogs",blogSchema);
 
 export default blogModel;

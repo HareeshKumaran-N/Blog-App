@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { getUserDetailsAction ,createUserActions} from '@/actions/user.actions';
 import LoadingGif from '../../../../public/loading.gif';
+import { Suspense } from "react";
 
 const Onboarding=()=>{
 
@@ -30,11 +31,14 @@ const Onboarding=()=>{
       
        if (data?.isOnboarded) {
          router.push("/");
-       } 
+         toast("You are already onboarded");
+       }
+       else
+         setLoading(false); 
 
      }
 
-     setLoading(false);
+
    }
 
    useEffect(()=>{
@@ -139,6 +143,7 @@ uploadTask.on('state_changed',
             <Image src={LoadingGif} alt="Loading" width={400} height={200} />
           </div>
         ) : (
+     
           <div className="parent-wrapper">
             <h1>Create your Profile.</h1>
             <div className="form-wrapper">
@@ -196,7 +201,9 @@ uploadTask.on('state_changed',
               Create
             </button>
           </div>
-        )}
+   
+
+        )} 
       </>
     );
     

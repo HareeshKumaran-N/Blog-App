@@ -25,5 +25,16 @@
     justify-content: space-between;
     align-items: center;
     color:$highlight-font-color;
+    @media screen and (max-width:750px){
+      display:none;
+    }
+  }
+
+  .mobile-nav-bar
+  {
+    display:none;
+    @media screen and (max-width:750px){
+      display:block;
+    }
   }
 }

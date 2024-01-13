@@ -1,0 +1,40 @@
+@import "../../../Styles/constants.scss";
+
+.post-section-skeleton-wrapper{
+   @include blogs-wrapper();
+
+}
+
+.card{
+  width: 425px;
+  height: 275px;
+
+  margin: 2% 0;
+  position: relative;
+  display: flex;
+
+  @media screen and (max-width: 1450px) {
+    width: 600px;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 1350px) {
+    width: 425px;
+    height: 250px;
+  }
+
+  @media screen and (max-width: 950px) {
+    width: 350px;
+    height: 250px;
+  }
+
+  @media screen and (max-width: 780px) {
+    width: 45%;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 650px) {
+    min-width: 70%;
+    height: 35%;
+  }
+}

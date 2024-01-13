@@ -1,12 +1,39 @@
 .card-main {
-  width: 30%;
-  height: 225
-  
-  px;
+  width: 425px;
+  height: 275px;
+
   margin: 2% 0;
   position: relative;
-//   display:flex;
+  display: flex;
 
+  @media screen and (max-width: 1450px) {
+    width: 600px;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 1350px) {
+    width: 425px;
+    height: 250px;
+  }
+
+  @media screen and (max-width: 950px) {
+    width: 350px;
+    height: 250px;
+  }
+
+  @media screen and (max-width: 780px) {
+    width: 45%;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 650px) {
+    min-width: 70%;
+    height: 35%;
+  }
+
+  a {
+    color: white;
+  }
   .cover-image {
     width: 100%;
     height: 100%;
@@ -16,15 +43,20 @@
   }
 
   .overlay {
-
-     width: 96%;
-      padding:4% 2%;
+    width: 96%;
+    // margin:2.5%;
     height: 92%;
+
     display: none;
     color: rgba(255, 255, 255, 0.933);
-
+    .blog-title {
+      font-size:20px;
+      
+  @media screen and (max-width: 650px) {
+   font-size:2.5vw;
+  }
+    }
     .overlay-bottom-wrapper {
-     
       display: flex;
       justify-content: space-between;
 
@@ -42,7 +74,7 @@
       .read {
         color: rgba(255, 255, 255, 0.881);
         span {
-          font-size: 30px;
+          font-size: 25px;
           font-weight: 100;
         }
       }
@@ -59,9 +91,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-          position: absolute;
-          top:0%;
-
+      position: absolute;
+      top: 2%;
+      right: 2%;
     }
   }
 }

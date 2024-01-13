@@ -2,6 +2,7 @@
 "use server";
 import userModel from "@/Models/user.model";
 import connectToDB from "@/Utils/connectToDB";
+import { revalidatePath } from "next/cache";
 
 export async function createUserActions(reqData)
 {
@@ -43,7 +44,7 @@ export async function createUserActions(reqData)
 }
 
 
-export async function getUserDetailsAction(clerkId) {
+export async function getUserDetailsAction(clerkId:String) {
   console.log(clerkId);
   try {
     await connectToDB();
@@ -79,7 +80,7 @@ export async function updateUserDetails(id, updateData) {
       id,
       updateData
     );
-
+    revalidatePath("/MyProfile");
     return {
       message: "User Updated",
       success: "true",
@@ -94,3 +95,29 @@ export async function updateUserDetails(id, updateData) {
 }
 
 
+
+export async function getUserByID(Id:Object) {
+
+  try {
+    await connectToDB();
+    const user = await userModel.findById(Id);
+
+    if (user) {
+      return {
+        data: user,
+        message: "User found",
+        successful: true,
+      };
+    } else {
+      return {
+        message: "No user found",
+        data: {},
+        successful: true,
+      };
+    }
+  } catch (error) {
+    return {
+      successful: false,
+    };
+  }
+}

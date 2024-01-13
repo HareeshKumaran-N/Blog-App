@@ -1,0 +1,10 @@
+.skeleton-trending-post-wrapper {
+  margin: 15% 0;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+ 
+  @media screen and (max-width: 600px) {
+    margin: 25% 0;
+  }
+}
