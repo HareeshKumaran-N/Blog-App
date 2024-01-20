@@ -6,8 +6,8 @@ import en from "javascript-time-ago/locale/en";
 import AddComment from "@/Components/Comment/Comment";
 import { currentUser } from "@clerk/nextjs";
 import { fetchBlogComments } from "@/actions/comment.action";
-import CommentCard from "@/Components/Comment-card/comment-card";
 import PageTransistionTemplate from "@/Components/Page-transistion-animation/Page-transistion";
+import CommentCard from "@/Components/Comment-card/Comment-card";
 
 const ReadPage = async ({ params }) => {
   TimeAgo.addDefaultLocale(en);

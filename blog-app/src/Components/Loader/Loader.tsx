@@ -1,6 +1,6 @@
 import Image from "next/image";
 import loadingGif from '../../../public/loading.gif';
-import './loader.scss';
+import './Loader.scss';
 const Loader=()=>{
     return (
       <div className="loader-main">
